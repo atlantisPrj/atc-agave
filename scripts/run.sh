@@ -44,8 +44,8 @@ dataDir=$PWD/scripts/data/"$(basename "$0" .sh)"
 ledgerDir=$PWD/scripts/data/ledger
 logsDir=$PWD/scripts/data/logs
 
-SOLANA_RUN_SH_CLUSTER_TYPE=${SOLANA_RUN_SH_CLUSTER_TYPE:-development}
-echo $SOLANA_RUN_SH_CLUSTER_TYPE
+#SOLANA_RUN_SH_CLUSTER_TYPE=${SOLANA_RUN_SH_CLUSTER_TYPE:-development}
+#echo $SOLANA_RUN_SH_CLUSTER_TYPE
 SOLANA_RUN_SH_CLUSTER_TYPE=mainnet-beta
 
 
@@ -118,6 +118,10 @@ echo "Public IP: $MYIP_PUB"
 #master node host ip
 MASTER_NODE_IP=$MYIP_PUB          #50.190.23.129
 
+
+if [ ! -d "$logsDir" ]; then
+    mkdir -p $logsDir
+fi
 
 args=(
   --identity "$validator_identity"
